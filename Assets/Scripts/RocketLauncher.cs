@@ -47,10 +47,10 @@ public class RocketLauncher : MonoBehaviour {
 		/* rocketRotation.y -= 90.0f; */
 
 		Vector3 transformedOffset = origin.transform.rotation * shooterOffset;
-		RocketController rocket = ( RocketController )Instantiate(rocketController, origin.transform.position + transformedOffset, Quaternion.Euler(rocketRotation));
+		RocketController rkt = ( RocketController )Instantiate(rocketController, origin.transform.position + transformedOffset, Quaternion.Euler(rocketRotation));
 
     // direction shooting rocket towards
-    rocket.target = origin.transform.forward;
+    rkt.target = origin.transform.forward;
 
 		// Play a sound effect!
 		whooshSound.Play();
