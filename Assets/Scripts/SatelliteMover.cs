@@ -38,8 +38,9 @@ public class SatelliteMover : MonoBehaviour {
 			_state = SatelliteState.Dying;
 			GameController gameController = FindObjectOfType<GameController>();
 			gameController.GotOne();
+      this.GetComponent<Rigidbody>().useGravity = true;
 			this.GetComponent<AudioSource>().Play();
-			Destroy(gameObject, 1.5f);
+			Destroy(gameObject, Random.Range(10.0f, 30.0f));
 		}
 	}
 

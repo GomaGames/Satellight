@@ -6,6 +6,7 @@ public class RocketLauncher : MonoBehaviour {
 	public GameObject rocket;
 	public RocketController rocketController;
 	public AudioSource whooshSound;
+  public GameObject rocketExplosion;
 
 	private GameController _gameController;
 	private Vector3 _shooterOffset;
@@ -51,6 +52,7 @@ public class RocketLauncher : MonoBehaviour {
 
     // direction shooting rocket towards
     rkt.target = origin.transform.forward;
+    rkt.explosion = rocketExplosion;
 
 		// Play a sound effect!
 		whooshSound.Play();

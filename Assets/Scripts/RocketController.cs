@@ -16,7 +16,7 @@ public class RocketController : MonoBehaviour {
 	void OnCollisionEnter (Collision collision) {
 		if (collision.collider.tag == "Satellite") {
 			collision.collider.GetComponent<SatelliteMover>().DieSoon();
-      Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+      Instantiate(explosion, this.GetComponent<Transform>().position, this.GetComponent<Transform>().rotation);
 			Destroy(gameObject);
       Debug.Log("DESTROYING ROCKET");
 		}
