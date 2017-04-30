@@ -27,13 +27,13 @@ public class RocketLauncher : MonoBehaviour {
     } else if (!Cardboard.SDK.VRModeEnabled && Input.GetButtonDown("Fire1") && !_gameController.isGameOver) {
 
       // This is the same code as before
-      Vector3 mouseLoc = Input.mousePosition;
-      Vector3 worldMouseLoc = Camera.main.ScreenToWorldPoint(mouseLoc);
-      worldMouseLoc.x = rocket.transform.position.x;
-      worldMouseLoc.y = rocket.transform.position.y;
-      worldMouseLoc.z = rocket.transform.position.z;
-      rocket.transform.LookAt(worldMouseLoc);
-      LaunchRocketFrom(rocket, _shooterOffset);
+      /* Vector3 mouseLoc = Input.mousePosition; */
+      /* Vector3 worldMouseLoc = Camera.main.ScreenToWorldPoint(mouseLoc); */
+      /* rocket.transform.LookAt(worldMouseLoc); */
+      /* LaunchRocketFrom(rocket, _shooterOffset); */
+
+      GameObject vrLauncher = Cardboard.SDK.GetComponentInChildren<CardboardHead>().gameObject;
+      LaunchRocketFrom(vrLauncher, _vrShooterOffset);
 
     }
   }
@@ -43,9 +43,6 @@ public class RocketLauncher : MonoBehaviour {
 		// This will launch a rocket slightly in front of our origin object.
 		// We also have to rotate our model 90 degrees in the x-coordinate.
 		Vector3 rocketRotation = origin.transform.rotation.eulerAngles;
-		/* rocketRotation.z -= 90.0f; */
-		/* rocketRotation.x += 90.0f; */
-		/* rocketRotation.y -= 90.0f; */
 
 		Vector3 transformedOffset = origin.transform.rotation * shooterOffset;
 		RocketController rkt = ( RocketController )Instantiate(rocketController, origin.transform.position + transformedOffset, Quaternion.Euler(rocketRotation));
